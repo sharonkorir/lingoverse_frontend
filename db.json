@@ -1,0 +1,32 @@
+{
+  "languages": [
+    {
+      "id": 1,
+      "total_users": 0,
+      "lang_name": "Spanish",
+      "language_short_code": "es",
+      "created": "2023-04-12T15:52:19.486458+03:00"
+    },
+    {
+      "id": 2,
+      "total_users": 0,
+      "lang_name": "French",
+      "language_short_code": "fr",
+      "created": "2023-04-12T15:52:19.795570+03:00"
+    },
+    {
+      "id": 3,
+      "total_users": 0,
+      "lang_name": "English",
+      "language_short_code": "en",
+      "created": "2023-04-12T15:52:20.097796+03:00"
+    },
+    {
+      "id": 4,
+      "total_users": 0,
+      "lang_name": "Japanese",
+      "language_short_code": "ja",
+      "created": "2023-04-12T15:52:20.407294+03:00"
+    }
+  ]
+}

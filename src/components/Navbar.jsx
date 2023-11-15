@@ -24,12 +24,38 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from "@chakra-ui/icons";
-
+import { useNavigate } from "react-router-dom";
+import { authStore } from "../store";
+import { useMutation } from "@tanstack/react-query";
+import { logoutUserFn } from "../api/authApi";
 import logo from "../assets/icon.png";
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
   const theme = useTheme();
+  const navigate = useNavigate();
+  const user = authStore((store) => store.userInfo);
+  // const { mutate: logoutUser, isLoading } = useMutation(
+  //   async () => await logoutUserFn(),
+  //   {
+  //     onSuccess: (data) => {
+  //       navigate("/login");
+  //     },
+  //     onError: (error) => {
+  //       if (Array.isArray(error.response.data.error)) {
+  //         error.data.error.forEach((el) =>
+  //           console.log(el, "handle multiple errors")
+  //         );
+  //       } else {
+  //         console.log(error.message, "handle single error");
+  //       }
+  //     },
+  //   }
+  // );
+
+  // const onLogoutHandler = async () => {
+  //   logoutUser();
+  // };
 
   return (
     <Box>
@@ -90,7 +116,7 @@ export default function Navbar() {
             fontSize={"sm"}
             fontWeight={400}
             variant={"link"}
-            href={"#"}
+            href={"/login"}
           >
             Sign In
           </Button>
@@ -101,7 +127,7 @@ export default function Navbar() {
             fontWeight={600}
             color={"white"}
             bg={"pink.400"}
-            href={"#"}
+            href={"/register"}
             _hover={{
               bg: "pink.300",
             }}
@@ -200,6 +226,12 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
           flex={1}
         >
           <Icon color={"pink.400"} w={5} h={5} as={ChevronRightIcon} />
+          {/* <Button loading={isLoading} onClick={() => navigate("/profile")}>
+            Profile
+          </Button> */}
+          {/* <Button onClick={onLogoutHandler} loading={isLoading}>
+            Logout
+          </Button> */}
         </Flex>
       </Stack>
     </Box>
