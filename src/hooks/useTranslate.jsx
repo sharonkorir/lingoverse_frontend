@@ -1,15 +1,14 @@
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
+// const queryClient = useQueryClient();
+// const key = "translation";
+
 const translate = async (text, toLanguage) => {
-  console.log(
-    "translate is underway",
-    import.meta.env.VITE_APP_Base_URL,
-    "url"
-  );
   const options = {
     method: "POST",
-    url: import.meta.env.VITE_APP_Base_URL,
+    // url: import.meta.env.VITE_APP_Base_URL,
+    url: "https://microsoft-translator-text.p.rapidapi.com/translate",
 
     params: {
       "to[0]": toLanguage,
@@ -19,7 +18,7 @@ const translate = async (text, toLanguage) => {
     },
     headers: {
       "content-type": "application/json",
-      "X-RapidAPI-Key": import.meta.env.VITE_APP_RapidAPI_Key,
+      "X-RapidAPI-Key": "5b14fa506fmshb3f1160403f2306p1fae83jsnf8f5d7966f89",
       "X-RapidAPI-Host": "microsoft-translator-text.p.rapidapi.com",
     },
     data: [
@@ -30,7 +29,6 @@ const translate = async (text, toLanguage) => {
   };
 
   const res = await axios.request(options);
-  console.log(res, "request response");
   return res.data;
 };
 
